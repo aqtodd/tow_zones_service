@@ -7,8 +7,7 @@ class TowZonesController < ApplicationController
 
   def initialize
     @channel_key = Rails.application.secrets.ifttt_channel_key
-    @time_zone = Rails.configuration.x.tz.time_zone
-    @date_format = Rails.configuration.x.tz.strpstring
+    @tow_zones = TowZonesAPI.new
   end
 
   def status
@@ -16,7 +15,7 @@ class TowZonesController < ApplicationController
   end
 
   def setup
-    render json: { data: { samples: { triggers: { parking: {
+    render json: { data: { samples: { triggers: { tow_zones: {
               address: {
                 valid: "701 Scott St, San Francisco, CA",
                 invalid: "701 Scott St"
@@ -47,8 +46,7 @@ class TowZonesController < ApplicationController
   end
 
   def fetch_data(limit)
-    @parking = TowZonesAPI.new
-    JSON.parse(@parking.get(limit))
+    JSON.parse(@tow_zones.get(limit))
   end
 
   def md5(args_array)
@@ -59,8 +57,10 @@ class TowZonesController < ApplicationController
 
   def format(item)
     {
-      start: format_datetime(item['startdate'] + item['starttime']),
-      end: format_datetime(item['enddate'] + item['endtime']),
+      start_date: item['startdate'],
+      end_date: item['enddate'],
+      start_time: item['starttime'],
+      end_time: item['endtime'],
       address: item['address'],
       location: {
         lat: item['latitude'],
@@ -72,9 +72,5 @@ class TowZonesController < ApplicationController
       },
       created_at: item['datetimeentered'].to_time.utc.iso8601
     }
-  end
-
-  def format_datetime(datetime_string)
-    Time.strptime(datetime_string + @time_zone, @date_format).iso8601
   end
 end

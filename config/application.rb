@@ -20,7 +20,9 @@ module TowZones
   class Application < Rails::Application
     config.api_only = true
 
-    config.tz_api_url = 'https://data.sfgov.org'
-    config.tz_api_path = '/resource/he4j-vvmh.json'
+    config.x.tz.api_url = 'https://data.sfgov.org'
+    config.x.tz.api_path = '/resource/he4j-vvmh.json'
+    config.x.tz.strpstring = '%m/%d/%Y%H:%M%Z'
+    config.x.tz.time_zone = 'Pacific Time (US & Canada)'
   end
 end

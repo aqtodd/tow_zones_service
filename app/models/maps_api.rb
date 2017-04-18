@@ -1,0 +1,2 @@
+class MapsAPI
+end

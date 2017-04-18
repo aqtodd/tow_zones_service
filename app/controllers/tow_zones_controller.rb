@@ -1,0 +1,2 @@
+class TowZonesController < ApplicationController
+end

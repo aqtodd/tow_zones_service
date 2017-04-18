@@ -43,6 +43,9 @@ GEM
     byebug (9.0.6)
     concurrent-ruby (1.0.5)
     dotenv (2.2.0)
+    dotenv-rails (2.2.0)
+      dotenv (= 2.2.0)
+      railties (>= 3.2, < 5.1)
     erubis (2.7.0)
     ffi (1.9.18)
     globalid (0.4.0)
@@ -120,7 +123,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  dotenv
+  dotenv-rails
   listen (~> 3.0.5)
   puma (~> 3.0)
   rails (~> 5.0.2)

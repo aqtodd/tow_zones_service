@@ -1,24 +1,5 @@
-# README
+# __SF Tow Zones__
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple service for IFTTT wrapping the Dept of Public Works Street Parking Closure feed, written in Rails 5.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+_Production_ url: `https://enigmatic-depths-69040.herokuapp.com`
